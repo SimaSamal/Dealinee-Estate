@@ -31,31 +31,33 @@
             <li><a href="/src/pages/contact/contact.html" class="nav-link px-4 py-2 rounded-full transition hover:text-blue-500">Contact</a></li>
             <li><a href="tel:+917008937155" class="nav-link px-4 py-2 rounded-full transition hover:text-blue-500">+91 7008937155</a></li>
             <li>
-                <a href="#signin" class="nav-link px-4 py-2 rounded-full bg-emerald-600 text-white shadow-md hover:bg-emerald-700 transition">
+                <a href="#signin" class="nav-link px-4 py-2 rounded-full bg-emerald-700 text-white shadow-md hover:bg-emerald-800 transition">
                     Sign In
                 </a>
             </li>
         </ul>
     </div>
 
+
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white text-gray-900 text-center transform -translate-y-full transition-transform duration-500 ease-in-out shadow-lg z-50">
-        <div class="absolute top-5 left-6 text-xl font-bold">Menu</div>
-        <button id="close-btn" class="absolute top-5 right-5 text-3xl font-bold text-gray-900 focus:outline-none">
-            x
-        </button>
-        <ul class="flex flex-col space-y-6 pt-20 text-xl">
-            <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
-            <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
-            <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
-            <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
-            <li>
-                <a href="#signin" class="block py-3 bg-blue-600 text-white rounded-md px-6 py-2 mx-auto w-32 hover:bg-blue-700">
-                    Sign In
-                </a>
-            </li>
-        </ul>
-    </div>
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-[80vh] bg-white text-gray-900 text-center transform -translate-y-full transition-transform duration-500 ease-in-out shadow-lg z-50 overflow-y-auto">    <div class="absolute top-7 left-6 text-xl font-bold">Menu</div>
+    <button id="close-btn" class="absolute top-5 right-5 text-3xl font-bold text-gray-900 focus:outline-none">x</button>
+    
+    <!-- Line below Menu and Close button -->
+    <hr class="absolute top-14 left-0 w-full border-t border-gray-300">
+    
+    <ul class="flex flex-col space-y-6 pt-20 text-xl">
+        <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
+        <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
+        <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
+        <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
+        <li>
+            <a href="#signin" class="block py-3 bg-blue-600 text-white rounded-md px-6 py-2 mx-auto w-32 hover:bg-blue-700">
+                Sign In
+            </a>
+        </li>
+    </ul>
+</div>
 </nav>
 
 <!-- JavaScript -->
@@ -73,7 +75,7 @@
         if (currentScrollY > scrollThreshold && !isScrolled) {
             // Apply scroll changes
             isScrolled = true;
-            navbar.classList.add("bg-[#446680]", "text-white", "rounded-b-[50px]", "shadow-lg");
+            navbar.classList.add("bg-[#152651]", "text-white", "rounded-b-[50px]", "shadow-lg");
             navbar.classList.remove("bg-white", "text-black");
 
             logoDefault.classList.add("opacity-0");
@@ -83,7 +85,7 @@
             // Revert to original navbar
             isScrolled = false;
             navbar.classList.add("bg-white", "text-black");
-            navbar.classList.remove("bg-[#446680]", "text-white", "rounded-b-[50px]", "shadow-lg");
+            navbar.classList.remove("bg-[#152651]", "text-white", "rounded-b-[50px]", "shadow-lg");
 
             logoDefault.classList.remove("opacity-0");
             logoScroll.classList.add("opacity-0");
@@ -93,14 +95,17 @@
     // Attach scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Mobile Menu Toggle
-    document.getElementById("menu-btn").addEventListener("click", function() {
-        document.getElementById("mobile-menu").classList.remove("-translate-y-full");
-    });
+   // Mobile Menu Toggle
+document.getElementById("menu-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.remove("-translate-y-full");
+    document.getElementById("mobile-menu").classList.add("translate-y-0");
+});
 
-    document.getElementById("close-btn").addEventListener("click", function() {
-        document.getElementById("mobile-menu").classList.add("-translate-y-full");
-    });
+document.getElementById("close-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.add("-translate-y-full");
+    document.getElementById("mobile-menu").classList.remove("translate-y-0");
+});
+
 
     // Highlight active link
     function setActiveLink() {
@@ -111,9 +116,9 @@
             let linkPath = new URL(link.href).pathname;
 
             if (linkPath === currentPath) {
-                link.classList.add("bg-blue-500", "text-white", "rounded-full");
+                link.classList.add("bg-blue-500", "text-white", "hover:text-gray-800", "rounded-full");
             } else {
-                link.classList.remove("bg-blue-500", "text-white", "rounded-full");
+                link.classList.remove("bg-blue-500", "text-white","hover:text-gray-800", "rounded-full");
             }
         });
     }
@@ -124,93 +129,96 @@
 
 
 <!-- Hero Section -->
-<section id="hero-section" class="relative bg-cover bg-center min-h-[50vh] md:min-h-[70vh] flex items-center" style="background-image: url('/src/assets/image/home/image1.jpg');">
+<section id="hero-section" class="relative bg-cover bg-center min-h-[50vh] md:min-h-[70vh] flex items-center mt-20" style="background-image: url('/src/assets/image/home/10780441_19199439.jpg');">
     <!-- Dark Overlay -->
-    <div class="absolute inset-0  bg-opacity-50 flex flex-col items-center justify-center px-2 sm:px-4">
+    <div class="absolute inset-0 bg-black  bg-opacity-20 flex flex-col items-center justify-center px-2 sm:px-4">
         
         <!-- Hero Content Positioned Above the Search Bar -->
-        <div class="text-center text-white px-3 mb-3 sm:mb-5">
-            <h1 id="hero-heading" class="text-lg sm:text-2xl md:text-4xl font-bold mb-6 sm:mb-8 drop-shadow-lg">
+        <div class="text-center text-white px-3 mb-3">
+            <h1 id="hero-heading" class="text-2xl sm:text-2xl md:text-4xl font-bold mb-4 sm:mt-6 drop-shadow-lg">
                 Properties to buy in Bhubaneswar
             </h1>
             
         </div>
 
-<!-- Search and Filters Section -->
 <!-- Buttons Group -->
-<div class="bg-black bg-opacity-50 p-2 md:p-4 rounded-full w-full md:w-[38rem] flex flex-wrap gap-1 md:gap-2 -mb-5 md:-mb-8">
+<div class="bg-black bg-opacity-50 p-2 md:p-4 rounded-md w-full sm:w-[90%] md:w-[42rem] flex flex-wrap gap-1 sm:gap-2 sm:p-2 -mb-12 sm:-mb-8">
 
-    <button onclick="setActiveButton(this, 'buy.html'); changeHeroImage('buy'); filterProperties('buy')" 
-        class="filter-btn text-white px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md shadow-md hover:scale-105 transition-all">
-        <b>BUY</b>
-    </button>
-    <button onclick="setActiveButton(this, 'rent.html'); changeHeroImage('rent'); filterProperties('rent')" 
-        class="filter-btn text-white px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md shadow-md hover:scale-105 transition-all">
-        <b>RENT</b>
-    </button>
-    <button onclick="setActiveButton(this, 'commercial.html'); changeHeroImage('commercial'); filterProperties('commercial')" 
-        class="filter-btn text-white px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md shadow-md hover:scale-105 transition-all">
-        <b>COMMERCIAL</b>
-    </button>
-    <button onclick="setActiveButton(this, 'plot.html'); changeHeroImage('plot'); filterProperties('plot')" 
-        class="filter-btn text-white px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md shadow-md hover:scale-105 transition-all">
-        <b>PLOT</b>
-    </button>
+    <div class="mb-4 flex flex-wrap justify-center gap-1 sm:gap-2">
+        <button onclick="setActiveButton(this, 'buy.html'); changeHeroImage('buy'); filterProperties('buy')" 
+            class="filter-btn text-white px-2 py-1 sm:px-1 sm:py-1 text-[8px] sm:text-xs md:text-sm rounded-md shadow-md hover:scale-105 transition-all min-w-[60px] sm:min-w-[80px]">
+            <span class="active-indicator absolute bottom-0 left-0 w-0 h-[2px] bg-red-500 transition-all"></span>
+            <b>BUY</b>
+        </button>
+        <button onclick="setActiveButton(this, 'rent.html'); changeHeroImage('rent'); filterProperties('rent')" 
+            class="filter-btn text-white px-2 py-1 sm:px-1 sm:py-1 text-[8px] sm:text-xs md:text-sm rounded-md shadow-md hover:scale-105 transition-all min-w-[60px] sm:min-w-[80px]">
+            <span class="active-indicator absolute bottom-0 left-0 w-0 h-[2px] bg-red-500 transition-all"></span>
+            <b>RENT</b>
+        </button>
+        <button onclick="setActiveButton(this, 'commercial.html'); changeHeroImage('commercial'); filterProperties('commercial')" 
+            class="filter-btn text-white px-2 py-1 sm:px-1 sm:py-1 text-[8px] sm:text-xs md:text-sm rounded-md shadow-md hover:scale-105 transition-all min-w-[60px] sm:min-w-[100px]">
+            <span class="active-indicator absolute bottom-0 left-0 w-0 h-[2px] bg-red-500 transition-all"></span>
+            <b>COMMERCIAL</b>
+        </button>
+        <button onclick="setActiveButton(this, 'plot.html'); changeHeroImage('plot'); filterProperties('plot')" 
+            class="filter-btn text-white px-2 py-1 sm:px-1 sm:py-1 text-[8px] sm:text-xs md:text-sm rounded-md shadow-md hover:scale-105 transition-all min-w-[60px] sm:min-w-[80px]">
+            <span class="active-indicator absolute bottom-0 left-0 w-0 h-[2px] bg-red-500 transition-all"></span>
+            <b>PLOT</b>
+        </button>
+    </div>
+
 </div>
 
+
+
     <script>
-        // for active buttons
-        function setActiveButton(clickedButton) {
-            // Remove active class from all buttons
-            document.querySelectorAll(".filter-btn").forEach(button => {
-                button.classList.remove("bg-blue-700", "text-white");
-                button.classList.add("text-white");
-            });
-    
-            // Add active class to clicked button
-            clickedButton.classList.add("bg-blue-700", "text-white");
-        }
-    
-        // Set the first button as active by default
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector(".filter-btn").classList.add("bg-blue-700", "text-white");
-        });
-
-
-        //search button link with respective buttons pages
-        
-        let activePage = "buy.html"; // Default page
+     // Set the default active page to 'buy.html' if not stored
+let activePage = localStorage.getItem("activePage") || "buy.html";
 
 function setActiveButton(clickedButton, page) {
     // Remove active class from all buttons
     document.querySelectorAll(".filter-btn").forEach(button => {
-        button.classList.remove("bg-blue-700", "text-white");
-        button.classList.add("text-white");
+        button.classList.remove("active");
     });
 
     // Add active class to clicked button
-    clickedButton.classList.add("bg-blue-700", "text-white");
+    clickedButton.classList.add("active");
 
-    // Set the active page
+    // Update the active page and store in localStorage
     activePage = page;
+    localStorage.setItem("activePage", page);
 }
 
+// Ensure the correct button is active on page load
+document.addEventListener("DOMContentLoaded", function () {
+    let buttons = document.querySelectorAll(".filter-btn");
+
+    buttons.forEach(button => {
+        let page = button.getAttribute("onclick").match(/'([^']+)'/)[1]; // Extracts page from onclick
+        if (page === activePage) {
+            setActiveButton(button, activePage);
+        }
+    });
+});
+
+// Function to redirect to the active page when clicking the search button
 function redirectToPage(event) {
-    event.preventDefault(); // Prevent form submission default action
+    event.preventDefault(); // Prevent default form submission
     window.location.href = activePage; // Redirect to the selected page
 }
 
-// Set the first button as active by default on page load
-document.addEventListener("DOMContentLoaded", function() {
-    let firstButton = document.querySelector(".filter-btn");
-    firstButton.classList.add("bg-blue-700", "text-white");
-    activePage = "buy.html";
+// Attach event listener to search form submission
+document.addEventListener("DOMContentLoaded", function () {
+    let searchForm = document.querySelector("form");
+    if (searchForm) {
+        searchForm.addEventListener("submit", redirectToPage);
+    }
 });
 
     </script>
 
            <!-- Search Form -->
-    <form onsubmit="redirectToPage(event)" class="flex items-center bg-white rounded-full shadow-md p-2 sm:p-3 mt-2 w-full max-w-2xl z-10">
+    <form onsubmit="redirectToPage(event)" class="flex items-center bg-white rounded-full shadow-md p-2 sm:p-3 mt-2 w-full max-w-2xl z-10  gap-2">
         <input type="text" placeholder="Bhubaneswar" 
             class="border-none px-3 py-1 h-8 w-24 sm:w-36 bg-transparent shadow-lg rounded-full focus:ring-2 focus:ring-blue-400 outline-none transition-all duration-200 text-[10px] sm:text-sm">
         
@@ -235,23 +243,55 @@ document.addEventListener("DOMContentLoaded", function() {
 .animate-zoom {
     animation: zoom 10s ease-in-out infinite alternate;
 }
+
+
+.filter-btn {
+    position: relative;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.filter-btn .active-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #007bff; /* Change to match your theme */
+    transition: width 0.3s ease-in-out;
+}
+
+.filter-btn.active .active-indicator {
+    width: 100%; /* Only active buttons get the underline */
+}
+
+/* Optional: Prevent hover effects on the hero image */
+.hero-section:hover .active-indicator {
+    width: 0 !important;
+}
+
 </style>
 
 
 
 <!-- Popup Screen -->
 <div id="popup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden cursor-move z-10">
-    <div id="popupBox" class="bg-white p-4 rounded-lg shadow-lg w-[1000px] h-[350px] relative flex flex-col items-center">
+    <div id="popupBox" class="bg-white p-4 rounded-lg shadow-lg w-[1000px] h-[520px] relative flex flex-col items-center">
         <!-- Cross Button -->
         <button id="closePopup" class="absolute top-3 right-3 text-red-600 hover:text-red-800 text-2xl font-bold z-10">&times;</button>
 
         <!-- Image Container -->
-        <div class="relative w-full h-[300px] overflow-hidden rounded-lg ">
-            <img id="popupImage" src="/src/assets/image/home/image1.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+        <div class="relative w-full h-[500px] overflow-hidden rounded-lg ">
+            <img id="popupImage" src="src/assets/image/home/Popup/meadowex1.jpeg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100">
         </div>
 
         <!-- Show More Link -->
-        <a href="gallery.html" class="mt-2 text-blue-500 hover:underline">Show More</a>
+        <a href="#" class="mt-2 text-blue-500 hover:underline">Show More</a>
     </div>
 </div>
 
@@ -300,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="relative group overflow-hidden rounded-lg shadow-lg">
                 <img id="project2" src="/Home/assets/3d-rendering-loft-luxury-living-room-with-bookshelf-near-bookshelf (1).jpg" alt="Upcoming Project 2" class="w-full h-64 object-cover transition duration-300 group-hover:scale-105">
                 <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-3 text-center transform translate-y-6 opacity-0 transition duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                    <h3 class="text-lg font-semibold">The Elite Towers</h3>
+                    <h3 class="text-lg font-semibold">JB Polaris</h3>
                 </div>
             </div>
 
@@ -308,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="relative group overflow-hidden rounded-lg shadow-lg">
                 <img id="project3" src="/Home/assets/3d-rendering-modern-dining-room-living-room-with-luxury-decor.jpg" alt="Upcoming Project 3" class="w-full h-64 object-cover transition duration-300 group-hover:scale-105">
                 <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-3 text-center transform translate-y-6 opacity-0 transition duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                    <h3 class="text-lg font-semibold">Green Valley Homes</h3>
+                    <h3 class="text-lg font-semibold">Suman Mansion</h3>
                 </div>
             </div>
 
@@ -316,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="relative group overflow-hidden rounded-lg shadow-lg">
                 <img id="project4" src="/Home/assets/bangkok-thailand-august-12-2016-beautiful-luxury-living-room.jpg" alt="Upcoming Project 4" class="w-full h-64 object-cover transition duration-300 group-hover:scale-105">
                 <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-3 text-center transform translate-y-6 opacity-0 transition duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                    <h3 class="text-lg font-semibold">The Elite Towers</h3>
+                    <h3 class="text-lg font-semibold">Arya Suman Complex</h3>
                 </div>
             </div>
         </div>
@@ -338,19 +378,20 @@ document.addEventListener("DOMContentLoaded", function() {
             "/src/assets/image/home/Projects/Meadowex/meadowex8.jpeg"
         ],
         project2: [
-            "/Home/assets/3d-rendering-loft-luxury-living-room-with-bookshelf-near-bookshelf (1).jpg",
-            "/Home/assets/elegant-high-rise-apartment.jpg",
-            "/Home/assets/modern-condo-interior.jpg"
+            "/src/assets/image/home/Projects/Polaris/jbpolaris.jpeg",
+            "/src/assets/image/home/Projects/Polaris/jbpolaris2.jpeg",
+            "/src/assets/image/home/Projects/Polaris/jbpolaris3.jpeg",
+            "/src/assets/image/home/Projects/Polaris/jbpolaris4.jpeg",
+            "/src/assets/image/home/Projects/Polaris/jbpolaris5.jpeg"
+
         ],
         project3: [
-            "/Home/assets/3d-rendering-modern-dining-room-living-room-with-luxury-decor.jpg",
-            "/Home/assets/stylish-villa-exterior.jpg",
-            "/Home/assets/luxury-living-room.jpg"
+            "/src/assets/image/home/Projects/suman/suman1.jpeg",
+            "/src/assets/image/home/Projects/suman/suman2.jpeg"
         ],
         project4: [
-            "/Home/assets/bangkok-thailand-august-12-2016-beautiful-luxury-living-room.jpg",
-            "/Home/assets/modern-high-rise-building.jpg",
-            "/Home/assets/penthouse-luxury-suite.jpg"
+            "/src/assets/image/home/Projects/aryasuman/aryasuman.jpeg",
+            
         ]
     };
 
@@ -372,65 +413,81 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 <!-- Property Listings Grid -->
-<section class="py-12">
+<section class="py-12 bg-gray-100">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Search Results</h2>
         <div id="property-list" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <!-- Property Items -->
-            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="buy">
-                <img src="./assets/property-1.jpg" alt="Property 1" class="w-full h-64 object-cover">
+            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="rent">
+                <img src="./src/assets/image/home/rent/rent1/rent2.jpeg" alt="Property 1" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold">Luxury Apartment</h3>
-                    <p class="text-gray-600">$250,000 • New York, NY</p>
+                    <h3 class="text-lg font-semibold">3BHK Luxury Apartment</h3>
+                    <p class="text-gray-600">• Nandan Vihar, BBSR</p>
+                    <p class="text-blue-600 font-bold text-lg mt-2">₹35,000 </p>
+                    <a href="#" class="block text-center bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">More Details</a>
                 </div>
             </div>
             <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="rent">
-                <img src="./assets/property-2.jpg" alt="Property 2" class="w-full h-64 object-cover">
+                <img src="./src/assets/image/home/rent/rent2/rent.jpeg" alt="Property 2" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold">Modern House</h3>
-                    <p class="text-gray-600">$2,500/month • Los Angeles, CA</p>
-                </div>
-            </div>
-            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="commercial">
-                <img src="./assets/property-3.jpg" alt="Property 3" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold">Office Space</h3>
-                    <p class="text-gray-600">$1,500/month • Miami, FL</p>
-                </div>
-            </div>
-            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="plot">
-                <img src="./assets/property-4.jpg" alt="Property 4" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold">Land for Sale</h3>
-                    <p class="text-gray-600">$100,000 • San Francisco, CA</p>
-                </div>
-            </div>
-            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="buy">
-                <img src="./assets/property-5.jpg" alt="Property 5" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold">Penthouse Suite</h3>
-                    <p class="text-gray-600">$450,000 • Chicago, IL</p>
+                    <h3 class="text-lg font-semibold">2BHK Semi-Furnished Flat</h3>
+                    <p class="text-gray-600">• Raghunathpur, BBSR</p>
+                    <p class="text-blue-600 font-bold text-lg mt-2">₹23,000 </p>
+                    <a href="#" class="block text-center bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">More Details</a>
                 </div>
             </div>
             <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="rent">
-                <img src="./assets/property-6.jpg" alt="Property 6" class="w-full h-64 object-cover">
+                <img src="./src/assets/image/home/rent/rent3/rent.jpeg" alt="Property 3" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold">Cozy Condo</h3>
-                    <p class="text-gray-600">$1,800/month • Houston, TX</p>
+                    <h3 class="text-lg font-semibold">2BHK Furnished Flat</h3>
+                    <p class="text-gray-600">• Nandan Vihar, BBSR</p>
+                    <p class="text-blue-600 font-bold text-lg mt-2">₹32,000 </p>
+                    <a href="#" class="block text-center bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">More Details</a>
                 </div>
             </div>
-            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="commercial">
-                <img src="./assets/property-7.jpg" alt="Property 7" class="w-full h-64 object-cover">
+            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="rent">
+                <img src="./src/assets/image/home/rent/rent4/rent.jpeg" alt="Property 4" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold">Retail Space</h3>
-                    <p class="text-gray-600">$3,000/month • Seattle, WA</p>
+                    <h3 class="text-lg font-semibold">1BHK Furnished House</h3>
+                    <p class="text-gray-600">• KIIT Sqr, BBSR</p>
+                    <p class="text-blue-600 font-bold text-lg mt-2">₹16,000 </p>
+                    <a href="#" class="block text-center bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">More Details</a>
                 </div>
             </div>
-            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="plot">
+            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="rent">
+                <img src="./src/assets/image/home/rent/rent5/rent.jpeg" alt="Property 5" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">3BHK Duplex House</h3>
+                    <p class="text-gray-600">• Patia, BBSR</p>
+                    <p class="text-blue-600 font-bold text-lg mt-2">₹37,500</p>
+                    <a href="#" class="block text-center bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">More Details</a>
+                </div>
+            </div>
+            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="rent">
+                <img src="./src/assets/image/home/rent/rent6/rent1.jpeg" alt="Property 6" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">3BHK Semi-Furnished Flat</h3>
+                    <p class="text-gray-600">• KIIT Sqr, BBSR</p>
+                    <p class="text-blue-600 font-bold text-lg mt-2">₹37,000 </p>
+                    <a href="#" class="block text-center bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">More Details</a>
+                </div>
+            </div>
+            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="rent">
+                <img src="./src/assets/image/home/rent/rent7/rent1.png" alt="Property 7" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">3BHK Semi-Furnished</h3>
+                    <p class="text-gray-600">• KIIT Sqr, BBSR</p>
+                    <p class="text-blue-600 font-bold text-lg mt-2">₹35,000 </p>
+                    <a href="#" class="block text-center bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">More Details</a>
+                </div>
+            </div>
+            <div class="property bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition" data-type="rent">
                 <img src="./assets/property-8.jpg" alt="Property 8" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold">Farm Land</h3>
-                    <p class="text-gray-600">$200,000 • Austin, TX</p>
+                    <h3 class="text-lg font-semibold">2BHK Apartment</h3>
+                    <p class="text-gray-600">• Patia, BBSR</p>
+                    <p class="text-blue-600 font-bold text-lg mt-2">₹23,000 </p>
+                    <a href="#" class="block text-center bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">More Details</a>
                 </div>
             </div>
         </div>
@@ -439,52 +496,50 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
+<!--
 <section class="bg-gray-100 py-12">
     <div class="container mx-auto px-6 lg:px-16">
       <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Featured Properties</h2>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        <!-- Property Card 1 -->
+        <-- Property Card 1 --
         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
           <img src="list1.jpg" alt="Property Image" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold text-gray-900">Luxury Villa in New York</h3>
             <p class="text-gray-600 text-sm mt-2">3 Bed • 2 Bath • 2500 sqft</p>
-            <p class="text-blue-600 font-bold text-lg mt-2">$750,000</p>
+            <p class="text-blue-600 font-bold text-lg mt-2">₹750,000</p>
             <a href="#" class="block mt-4 text-white bg-blue-600 hover:bg-blue-700 text-center py-2 rounded-lg">View Details</a>
           </div>
         </div>
   
-        <!-- Property Card 2 -->
+        <-- Property Card 2 --
         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
           <img src="list1.jpg" alt="Property Image" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold text-gray-900">Modern Apartment in California</h3>
             <p class="text-gray-600 text-sm mt-2">2 Bed • 1 Bath • 1800 sqft</p>
-            <p class="text-blue-600 font-bold text-lg mt-2">$450,000</p>
+            <p class="text-blue-600 font-bold text-lg mt-2">₹450,000</p>
             <a href="#" class="block mt-4 text-white bg-blue-600 hover:bg-blue-700 text-center py-2 rounded-lg">View Details</a>
           </div>
         </div>
   
-        <!-- Property Card 3 -->
+        <-- Property Card 3 --
         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
           <img src="list1.jpg" alt="Property Image" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold text-gray-900">Cozy House in Florida</h3>
             <p class="text-gray-600 text-sm mt-2">4 Bed • 3 Bath • 3000 sqft</p>
-            <p class="text-blue-600 font-bold text-lg mt-2">$620,000</p>
+            <p class="text-blue-600 font-bold text-lg mt-2">₹620,000</p>
             <a href="#" class="block mt-4 text-white bg-blue-600 hover:bg-blue-700 text-center py-2 rounded-lg">View Details</a>
           </div>
         </div>
   
       </div>
     </div>
-  </section>
+  </section>-->
     
-
     <!-- Footer -->
 
 <footer class="bg-gray-900 text-white py-8 mt-20">
@@ -492,7 +547,8 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- About Section with Logo -->
         <div>
-          <img src="/src/assets/white-new-logo.webp" alt="Dealinee Estate Logo" class="w-24 mb-4"> <!-- Add your logo path -->
+            <img src="/src/assets/white-new-logo.webp" alt="Dealinee Estate Logo" class="w-48 mb-4"> 
+
           <h3 class="text-xl font-semibold mb-2">About Us</h3>
           <p class="text-gray-400">We are committed to empowering communities through education, social initiatives, and sustainable solutions.</p>
         </div>
@@ -501,10 +557,9 @@ document.addEventListener("DOMContentLoaded", function() {
         <div>
           <h3 class="text-xl font-semibold mb-2">Quick Links</h3>
           <ul class="space-y-2">
-            <li><a href="home.html" class="text-gray-400 hover:text-white">Home</a></li>
-            <li><a href="about.html" class="text-gray-400 hover:text-white">About</a></li>
-            <li><a href="properties.html" class="text-gray-400 hover:text-white">Properties</a></li>
-            <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+            <li><a href="/index.html" class="text-gray-400 hover:text-white">Home</a></li>
+            <li><a href="/src/pages/about/about.html" class="text-gray-400 hover:text-white">About</a></li>
+            <li><a href="/src/pages/contact/contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
           </ul>
         </div>
   
@@ -512,7 +567,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <div>
           <h3 class="text-xl font-semibold mb-2">Contact Us</h3>
           <p class="text-gray-400">Email: dealineeestate@gmail.com</p>
-          <p class="text-gray-400">Phone: +91 801 849 0072</p>
+          <p class="text-gray-400">Phone: +91 700 893 7155</p>
           <p class="text-gray-400">Address: Flat No - 5A, 5th Floor, Iscon Residency Apartment,
             Near Koel Campus, Sishu Vihar, Patia,
             Bhubaneswar, Odisha - 751024 , India</p>
@@ -522,17 +577,17 @@ document.addEventListener("DOMContentLoaded", function() {
       <!-- Social Media & Copyright -->
       <div class="mt-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-700 pt-4">
         <p class="text-gray-400 text-sm">© 2025 Dealinee Estate Real Estate Company. All Rights Reserved.</p>
-        <div class="flex space-x-4 mt-2 md:mt-0">
-          <a href="https://www.facebook.com/profile.php?id=100083070285659" target="_blank" class="text-gray-400 hover:text-blue-500 transition duration-300">
+        <div class="flex space-x-6 mt-2 md:mt-0">
+          <a href="https://www.facebook.com/profile.php?id=100083070285659" target="_blank" class="text-gray-400 hover:text-blue-500 transition duration-300 text-2xl">
             <i class="fab fa-facebook"></i>
           </a>
-          <a href="https://twitter.com/dealineeestate" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300">
+          <a href="https://twitter.com/dealineeestate" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300 text-2xl">
             <i class="fab fa-twitter"></i>
           </a>
-          <a href="https://www.instagram.com/dealinee_estate/" target="_blank" class="text-gray-400 hover:text-pink-500 transition duration-300">
+          <a href="https://www.instagram.com/dealinee_estate/" target="_blank" class="text-gray-400 hover:text-pink-500 transition duration-300 text-2xl">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="https://www.linkedin.com/company/dealineeestate" target="_blank" class="text-gray-400 hover:text-blue-700 transition duration-300">
+          <a href="https://www.linkedin.com/company/dealineeestate" target="_blank" class="text-gray-400 hover:text-blue-700 transition duration-300 text-2xl">
             <i class="fab fa-linkedin"></i>
           </a>
         </div>

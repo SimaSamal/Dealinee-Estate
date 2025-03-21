@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body class="font-sans">
-    <!-- Navbar -->
+   <!-- Navbar -->
 <nav id="navbar" class="fixed top-0 left-0 w-full bg-white text-black shadow-md px-6 py-4 transition-all duration-500 z-50 flex items-center">
     <div class="container mx-auto flex justify-between items-center">
         <!-- Logo (Default) -->
@@ -33,31 +33,33 @@
             <li><a href="/src/pages/contact/contact.html" class="nav-link px-4 py-2 rounded-full transition hover:text-blue-500">Contact</a></li>
             <li><a href="tel:+917008937155" class="nav-link px-4 py-2 rounded-full transition hover:text-blue-500">+91 7008937155</a></li>
             <li>
-                <a href="#signin" class="nav-link px-4 py-2 rounded-full bg-emerald-600 text-white shadow-md hover:bg-emerald-700 transition">
+                <a href="#signin" class="nav-link px-4 py-2 rounded-full bg-emerald-700 text-white shadow-md hover:bg-emerald-800 transition">
                     Sign In
                 </a>
             </li>
         </ul>
     </div>
 
+
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white text-gray-900 text-center transform -translate-y-full transition-transform duration-500 ease-in-out shadow-lg z-50">
-        <div class="absolute top-5 left-6 text-xl font-bold">Menu</div>
-        <button id="close-btn" class="absolute top-5 right-5 text-3xl font-bold text-gray-900 focus:outline-none">
-            x
-        </button>
-        <ul class="flex flex-col space-y-6 pt-20 text-xl">
-            <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
-            <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
-            <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
-            <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
-            <li>
-                <a href="#signin" class="block py-3 bg-blue-600 text-white rounded-md px-6 py-2 mx-auto w-32 hover:bg-blue-700">
-                    Sign In
-                </a>
-            </li>
-        </ul>
-    </div>
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-[80vh] bg-white text-gray-900 text-center transform -translate-y-full transition-transform duration-500 ease-in-out shadow-lg z-50 overflow-y-auto">    <div class="absolute top-7 left-6 text-xl font-bold">Menu</div>
+    <button id="close-btn" class="absolute top-5 right-5 text-3xl font-bold text-gray-900 focus:outline-none">x</button>
+    
+    <!-- Line below Menu and Close button -->
+    <hr class="absolute top-14 left-0 w-full border-t border-gray-300">
+    
+    <ul class="flex flex-col space-y-6 pt-20 text-xl">
+        <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
+        <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
+        <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
+        <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
+        <li>
+            <a href="#signin" class="block py-3 bg-blue-600 text-white rounded-md px-6 py-2 mx-auto w-32 hover:bg-blue-700">
+                Sign In
+            </a>
+        </li>
+    </ul>
+</div>
 </nav>
 
 <!-- JavaScript -->
@@ -75,7 +77,7 @@
         if (currentScrollY > scrollThreshold && !isScrolled) {
             // Apply scroll changes
             isScrolled = true;
-            navbar.classList.add("bg-[#446680]", "text-white", "rounded-b-[50px]", "shadow-lg");
+            navbar.classList.add("bg-[#152651]", "text-white", "rounded-b-[50px]", "shadow-lg");
             navbar.classList.remove("bg-white", "text-black");
 
             logoDefault.classList.add("opacity-0");
@@ -85,7 +87,7 @@
             // Revert to original navbar
             isScrolled = false;
             navbar.classList.add("bg-white", "text-black");
-            navbar.classList.remove("bg-[#446680]", "text-white", "rounded-b-[50px]", "shadow-lg");
+            navbar.classList.remove("bg-[#152651]", "text-white", "rounded-b-[50px]", "shadow-lg");
 
             logoDefault.classList.remove("opacity-0");
             logoScroll.classList.add("opacity-0");
@@ -95,14 +97,17 @@
     // Attach scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Mobile Menu Toggle
-    document.getElementById("menu-btn").addEventListener("click", function() {
-        document.getElementById("mobile-menu").classList.remove("-translate-y-full");
-    });
+   // Mobile Menu Toggle
+document.getElementById("menu-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.remove("-translate-y-full");
+    document.getElementById("mobile-menu").classList.add("translate-y-0");
+});
 
-    document.getElementById("close-btn").addEventListener("click", function() {
-        document.getElementById("mobile-menu").classList.add("-translate-y-full");
-    });
+document.getElementById("close-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.add("-translate-y-full");
+    document.getElementById("mobile-menu").classList.remove("translate-y-0");
+});
+
 
     // Highlight active link
     function setActiveLink() {
@@ -113,9 +118,9 @@
             let linkPath = new URL(link.href).pathname;
 
             if (linkPath === currentPath) {
-                link.classList.add("bg-blue-500", "text-white", "rounded-full");
+                link.classList.add("bg-blue-500", "text-white", "hover:text-gray-800", "rounded-full");
             } else {
-                link.classList.remove("bg-blue-500", "text-white", "rounded-full");
+                link.classList.remove("bg-blue-500", "text-white","hover:text-gray-800", "rounded-full");
             }
         });
     }
@@ -158,35 +163,35 @@
         <div class="flex flex-col items-center text-center py-12">
             <h4 class="text-gray-600 uppercase text-sm">Contact Us</h4>
             <h2 class="text-3xl font-bold mt-2">Let's Get In Touch</h2>
-
+        
             <!-- Contact Info Boxes -->
             <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-8 w-full max-w-4xl">
-            <!-- Location Box -->
-            <div class="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg w-80">
-                <i class="fas fa-map-marker-alt text-green-500 text-3xl"></i>
-                <h3 class="text-xl font-semibold mt-4">Location</h3>
-                <a href="https://wa.me/YOUR_PHONE_NUMBER" class="text-green-500 font-semibold hover:underline">
-                    Chat with us on WhatsApp
-                </a>
-                
-
-                </p>
-            </div>
-
-            <!-- Email Box (Highlighted in Black) -->
-            <div class="flex flex-col items-center bg-black text-white p-6 rounded-lg shadow-lg w-80">
-                <i class="fas fa-envelope text-white text-3xl"></i>
-                <h3 class="text-xl font-semibold mt-4">Email Address</h3>
-                <p class="mt-2"><a href="mailto:info@yourdomain.com" class="underline">dealineeestate@gmail.com</a></p>
-            </div>
-
-            <!-- Phone Box -->
-            <div class="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg w-80">
-                <i class="fas fa-phone text-green-500 text-3xl"></i>
-                <h3 class="text-xl font-semibold mt-4">Phone</h3>
-                <p class="text-gray-600 mt-2"><a href="tel:+91XXXXXXXXXX" class="underline">+91 80184 90072</a></p>
+                <!-- Location Box -->
+                <div class="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg w-80 min-h-[200px]">
+                    <i class="fas fa-map-marker-alt text-green-500 text-3xl"></i>
+                    <h3 class="text-xl font-semibold mt-4">WhatsApp</h3>
+                    <a href="https://wa.me/YOUR_PHONE_NUMBER" class="text-green-500 font-semibold hover:underline">
+                        Chat with us on WhatsApp
+                    </a>
+                </div>
+        
+                <!-- Email Box (Highlighted in Black) -->
+                <div class="flex flex-col items-center bg-black text-white p-6 rounded-lg shadow-lg w-80 min-h-[200px]">
+                    <i class="fas fa-envelope text-white text-3xl"></i>
+                    <h3 class="text-xl font-semibold mt-4">Email Address</h3>
+                    <p class="mt-2"><a href="mailto:info@yourdomain.com" class="underline">dealineeestate@gmail.com</a></p>
+                </div>
+        
+                <!-- Phone Box -->
+                <div class="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg w-80 min-h-[200px]">
+                    <i class="fas fa-phone text-green-500 text-3xl"></i>
+                    <h3 class="text-xl font-semibold mt-4">Phone</h3>
+                    <p class="text-gray-600 mt-2"><a href="tel:+91 700 893 7155">+91 700 893 7155</a></p>
+                    <p class="text-gray-600 mt-2"><a href="tel:+91 909 008 5061">+91 909 008 5061</a></p>
+                </div>
             </div>
         </div>
+        
     </div>
     </section>
 
@@ -203,13 +208,74 @@
             <form id="contact-form" class="space-y-4 sm:space-y-6">
                 <input type="text" id="name" placeholder="Your Name" class="w-full p-3 sm:p-4 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" required>
                 <input type="email" id="email" placeholder="Your Email" class="w-full p-3 sm:p-4 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" required>
+                <input type="tel" id="phone" placeholder="Your Phone Number" class="w-full p-3 sm:p-4 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" required>
                 <input type="text" id="subject" placeholder="Subject" class="w-full p-3 sm:p-4 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" required>
                 <textarea id="message" placeholder="Your Message" class="w-full p-3 sm:p-4 border border-gray-300 rounded h-32 sm:h-40 focus:ring-2 focus:ring-blue-500" required></textarea>
-                <button type="submit" class="w-full sm:w-auto bg-blue-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out text-sm sm:text-base">Send Message</button>
+                <button type="submit" class="w-full sm:w-auto bg-blue-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out text-sm sm:text-base">
+                    Send Message
+                </button>
             </form>
+            
             <p id="response-message" class="text-center text-green-600 mt-3 hidden"></p>
         </div>
 
+        <script>
+            (function() {
+    emailjs.init("ggWUqKNXoq_02K6E7"); // Replace with your EmailJS Public Key
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let userEmail = document.getElementById("email").value;  // Get user email
+
+    let formData = {
+        name: document.getElementById("name").value,
+        email: userEmail,  // Admin Notification
+        phone: document.getElementById("phone").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value
+    };
+
+    console.log("Sending email to admin...");
+
+    // Send Email to Admin
+    emailjs.send("service_okhy0bn", "template_fp6jfyh", formData)
+        .then(function(response) {
+            console.log("Admin email sent successfully!", response.status, response.text);
+            
+            document.getElementById("response-message").textContent = "Message sent successfully!";
+            document.getElementById("response-message").classList.remove("hidden");
+            document.getElementById("contact-form").reset();
+
+            // Auto-Reply Data for User
+            let autoReplyData = {
+                to_email: userEmail,  // Send auto-reply to the user's email
+                name: formData.name
+            };
+
+            console.log("Sending auto-reply to user:", autoReplyData);
+
+            // Send Auto-Reply to User
+            emailjs.send("service_okhy0bn", "template_k3bvw1a", autoReplyData)
+                .then(function(autoReplyResponse) {
+                    console.log("Auto-reply sent successfully!", autoReplyResponse.status, autoReplyResponse.text);
+                })
+                .catch(function(autoReplyError) {
+                    console.error("Auto-reply failed:", autoReplyError);
+                });
+
+        })
+        .catch(function(error) {
+            console.error("Admin email failed:", error);
+            document.getElementById("response-message").textContent = "Failed to send message. Please try again.";
+            document.getElementById("response-message").classList.add("text-red-600");
+            document.getElementById("response-message").classList.remove("hidden");
+        });
+});
+
+
+        </script>
         <!-- Address Section -->
         <div class="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-6 sm:p-8 rounded-lg shadow-lg text-center transform transition duration-700 ease-in-out opacity-0 translate-x-[50px]" id="addressSection">
             <img src="/src/assets/image/contact/image1.jpg" alt="Office Location" class="w-full rounded-lg shadow-md mb-4 sm:mb-6">
@@ -219,8 +285,8 @@
                 Flat No - 5A, 5th Floor, Iscon Residency Apartment, <br>
                 Near Koel Campus, Sishu Vihar, Patia, <br>
                 Bhubaneswar, Odisha - 751024 <br>
-                Email: <a href="mailto:info@dealineeestate.com" class="underline text-yellow-400 hover:text-yellow-300 transition">info@dealineeestate.com</a> <br>
-                Phone: <a href="tel:+91XXXXXXXXXX" class="underline text-yellow-400 hover:text-yellow-300 transition">+91 XXXXX XXXXX</a>
+                Email: <a href="mailto:dealineeestate@gmail.com" class="underline text-yellow-400 hover:text-yellow-300 transition">dealineeestate@gmail.com</a> <br>
+                Phone: <a href="tel:+91 700 893 7155" class="underline text-yellow-400 hover:text-yellow-300 transition">+91 700 893 7155</a>
             </p>
         </div>
     </div>  

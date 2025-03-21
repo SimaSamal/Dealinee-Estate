@@ -31,31 +31,33 @@
             <li><a href="/src/pages/contact/contact.html" class="nav-link px-4 py-2 rounded-full transition hover:text-blue-500">Contact</a></li>
             <li><a href="tel:+917008937155" class="nav-link px-4 py-2 rounded-full transition hover:text-blue-500">+91 7008937155</a></li>
             <li>
-                <a href="#signin" class="nav-link px-4 py-2 rounded-full bg-emerald-600 text-white shadow-md hover:bg-emerald-700 transition">
+                <a href="#signin" class="nav-link px-4 py-2 rounded-full bg-emerald-700 text-white shadow-md hover:bg-emerald-800 transition">
                     Sign In
                 </a>
             </li>
         </ul>
     </div>
 
+
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white text-gray-900 text-center transform -translate-y-full transition-transform duration-500 ease-in-out shadow-lg z-50">
-        <div class="absolute top-5 left-6 text-xl font-bold">Menu</div>
-        <button id="close-btn" class="absolute top-5 right-5 text-3xl font-bold text-gray-900 focus:outline-none">
-            x
-        </button>
-        <ul class="flex flex-col space-y-6 pt-20 text-xl">
-            <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
-            <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
-            <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
-            <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
-            <li>
-                <a href="#signin" class="block py-3 bg-blue-600 text-white rounded-md px-6 py-2 mx-auto w-32 hover:bg-blue-700">
-                    Sign In
-                </a>
-            </li>
-        </ul>
-    </div>
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-[80vh] bg-white text-gray-900 text-center transform -translate-y-full transition-transform duration-500 ease-in-out shadow-lg z-50 overflow-y-auto">    <div class="absolute top-7 left-6 text-xl font-bold">Menu</div>
+    <button id="close-btn" class="absolute top-5 right-5 text-3xl font-bold text-gray-900 focus:outline-none">x</button>
+    
+    <!-- Line below Menu and Close button -->
+    <hr class="absolute top-14 left-0 w-full border-t border-gray-300">
+    
+    <ul class="flex flex-col space-y-6 pt-20 text-xl">
+        <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
+        <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
+        <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
+        <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
+        <li>
+            <a href="#signin" class="block py-3 bg-blue-600 text-white rounded-md px-6 py-2 mx-auto w-32 hover:bg-blue-700">
+                Sign In
+            </a>
+        </li>
+    </ul>
+</div>
 </nav>
 
 <!-- JavaScript -->
@@ -73,7 +75,7 @@
         if (currentScrollY > scrollThreshold && !isScrolled) {
             // Apply scroll changes
             isScrolled = true;
-            navbar.classList.add("bg-[#446680]", "text-white", "rounded-b-[50px]", "shadow-lg");
+            navbar.classList.add("bg-[#152651]", "text-white", "rounded-b-[50px]", "shadow-lg");
             navbar.classList.remove("bg-white", "text-black");
 
             logoDefault.classList.add("opacity-0");
@@ -83,7 +85,7 @@
             // Revert to original navbar
             isScrolled = false;
             navbar.classList.add("bg-white", "text-black");
-            navbar.classList.remove("bg-[#446680]", "text-white", "rounded-b-[50px]", "shadow-lg");
+            navbar.classList.remove("bg-[#152651]", "text-white", "rounded-b-[50px]", "shadow-lg");
 
             logoDefault.classList.remove("opacity-0");
             logoScroll.classList.add("opacity-0");
@@ -93,14 +95,17 @@
     // Attach scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Mobile Menu Toggle
-    document.getElementById("menu-btn").addEventListener("click", function() {
-        document.getElementById("mobile-menu").classList.remove("-translate-y-full");
-    });
+   // Mobile Menu Toggle
+document.getElementById("menu-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.remove("-translate-y-full");
+    document.getElementById("mobile-menu").classList.add("translate-y-0");
+});
 
-    document.getElementById("close-btn").addEventListener("click", function() {
-        document.getElementById("mobile-menu").classList.add("-translate-y-full");
-    });
+document.getElementById("close-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.add("-translate-y-full");
+    document.getElementById("mobile-menu").classList.remove("translate-y-0");
+});
+
 
     // Highlight active link
     function setActiveLink() {
@@ -111,9 +116,9 @@
             let linkPath = new URL(link.href).pathname;
 
             if (linkPath === currentPath) {
-                link.classList.add("bg-blue-500", "text-white", "rounded-full");
+                link.classList.add("bg-blue-500", "text-white", "hover:text-gray-800", "rounded-full");
             } else {
-                link.classList.remove("bg-blue-500", "text-white", "rounded-full");
+                link.classList.remove("bg-blue-500", "text-white","hover:text-gray-800", "rounded-full");
             }
         });
     }
@@ -376,26 +381,50 @@
     </div>
 </section>
     <!-- Testimonials Section -->
-<section class="container mx-auto p-8 text-center">
-    <h2 class="text-4xl font-bold text-blue-600 mb-6">What Our Clients Say</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="p-6 bg-white shadow-lg rounded-lg">
-            <img src="/src/assets/image/about/testimonial1.jpg" alt="Client 1" class="rounded-full mx-auto w-24 mb-4">
-            <p class="text-gray-600 italic">"Amazing service! The team was incredibly helpful and professional. Highly recommended!"</p>
-            <h3 class="text-xl font-semibold mt-4">Emily Johnson</h3>
+<section class="container mx-auto p-8 text-center bg-gradient-to-r from-blue-100 to-white">
+    <h2 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-500 mb-10 drop-shadow-lg">What Our Clients Say</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        
+        <!-- Testimonial Card -->
+        <div class="relative p-6 bg-white bg-opacity-80 backdrop-blur-lg shadow-xl rounded-xl border border-gray-200 transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                <img src="/src/assets/image/about/Khalid Ahmed.jpg" alt="Client 1" class="rounded-full w-20 h-20 object-cover border-4 border-blue-600 shadow-lg">
+            </div>
+            <div class="mt-10">
+                <p class="text-gray-700 italic text-lg leading-relaxed">“Working with Dealinee Estate was an incredibly smooth and positive experience. My primary contact, Chandan Sahoo, impressed me with his professionalism and integrity.”</p>
+                <h3 class="text-xl font-semibold mt-4 text-blue-700">Khalid Ahmed</h3>
+                <div class="flex justify-center mt-2 text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+            </div>
         </div>
-        <div class="p-6 bg-white shadow-lg rounded-lg">
-            <img src="/src/assets/image/about/testimonial2.jpg" alt="Client 2" class="rounded-full mx-auto w-24 mb-4">
-            <p class="text-gray-600 italic">"I had a great experience. They understood my needs perfectly and delivered beyond expectations."</p>
-            <h3 class="text-xl font-semibold mt-4">David Williams</h3>
+
+        <!-- Testimonial Card -->
+        <div class="relative p-6 bg-white bg-opacity-80 backdrop-blur-lg shadow-xl rounded-xl border border-gray-200 transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                <img src="/src/assets/image/about/testimonial2.jpg" alt="Client 2" class="rounded-full w-20 h-20 object-cover border-4 border-blue-600 shadow-lg">
+            </div>
+            <div class="mt-10">
+                <p class="text-gray-700 italic text-lg leading-relaxed">“I had a great experience. They understood my needs perfectly and delivered beyond expectations.”</p>
+                <h3 class="text-xl font-semibold mt-4 text-blue-700">David Williams</h3>
+                <div class="flex justify-center mt-2 text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+            </div>
         </div>
-        <div class="p-6 bg-white shadow-lg rounded-lg">
-            <img src="/src/assets/image/about/testimonial3.jpg" alt="Client 3" class="rounded-full mx-auto w-24 mb-4">
-            <p class="text-gray-600 italic">"Exceptional service and support. I highly appreciate their dedication and expertise."</p>
-            <h3 class="text-xl font-semibold mt-4">Sophia Martinez</h3>
+
+        <!-- Testimonial Card -->
+        <div class="relative p-6 bg-white bg-opacity-80 backdrop-blur-lg shadow-xl rounded-xl border border-gray-200 transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                <img src="/src/assets/image/about/testimonial3.jpg" alt="Client 3" class="rounded-full w-20 h-20 object-cover border-4 border-blue-600 shadow-lg">
+            </div>
+            <div class="mt-10">
+                <p class="text-gray-700 italic text-lg leading-relaxed">“Exceptional service and support. I highly appreciate their dedication and expertise.”</p>
+                <h3 class="text-xl font-semibold mt-4 text-blue-700">Sophia Martinez</h3>
+                <div class="flex justify-center mt-2 text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+            </div>
         </div>
+
     </div>
 </section>
+
     <!-- Footer -->
 
     <div id="footer"> </div>

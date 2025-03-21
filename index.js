@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var popupIcon = document.getElementById("popupIcon");
     var popupImage = document.getElementById("popupImage");
 
-    var images = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg"];
+    var images = ["src/assets/image/home/Popup/meadowex1.jpeg", "src/assets/image/home/Popup/meadowex3.jpeg", "src/assets/image/home/Popup/meadowex4.jpeg", "src/assets/image/home/Popup/meadowex5.jpeg", "src/assets/image/home/Popup/meadowex7.jpeg"];
     var currentIndex = 0;
     var isDragging = false, offsetX, offsetY;
 
@@ -79,10 +79,10 @@ function changeHeroImage(category) {
 
     // Define images for each category
     const images = {
-        buy: "/src/assets/image/home/buy.webp",
-        rent: "/src/assets/image/home/rent.jpg",
-        commercial: "/src/assets/image/home/commercial.jpg",
-        plot: "/src/assets/image/home/plot.jpg"
+        buy: "/src/assets/image/home/buy.jpg",
+        rent: "/src/assets/image/home/rent (1).jpg",
+        commercial: "/src/assets/image/home/commercial (2).jpg",
+        plot: "/src/assets/image/home/plot (1).jpg"
     };
 
     // Define headings for each category

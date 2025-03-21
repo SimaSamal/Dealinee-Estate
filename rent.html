@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 ">
-    <!-- Navbar -->
+  <!-- Navbar -->
 <nav id="navbar" class="fixed top-0 left-0 w-full bg-white text-black shadow-md px-6 py-4 transition-all duration-500 z-50 flex items-center">
     <div class="container mx-auto flex justify-between items-center">
         <!-- Logo (Default) -->
@@ -30,31 +30,33 @@
             <li><a href="/src/pages/contact/contact.html" class="nav-link px-4 py-2 rounded-full transition hover:text-blue-500">Contact</a></li>
             <li><a href="tel:+917008937155" class="nav-link px-4 py-2 rounded-full transition hover:text-blue-500">+91 7008937155</a></li>
             <li>
-                <a href="#signin" class="nav-link px-4 py-2 rounded-full bg-emerald-600 text-white shadow-md hover:bg-emerald-700 transition">
+                <a href="#signin" class="nav-link px-4 py-2 rounded-full bg-emerald-700 text-white shadow-md hover:bg-emerald-800 transition">
                     Sign In
                 </a>
             </li>
         </ul>
     </div>
 
+
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white text-gray-900 text-center transform -translate-y-full transition-transform duration-500 ease-in-out shadow-lg z-50">
-        <div class="absolute top-5 left-6 text-xl font-bold">Menu</div>
-        <button id="close-btn" class="absolute top-5 right-5 text-3xl font-bold text-gray-900 focus:outline-none">
-            x
-        </button>
-        <ul class="flex flex-col space-y-6 pt-20 text-xl">
-            <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
-            <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
-            <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
-            <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
-            <li>
-                <a href="#signin" class="block py-3 bg-blue-600 text-white rounded-md px-6 py-2 mx-auto w-32 hover:bg-blue-700">
-                    Sign In
-                </a>
-            </li>
-        </ul>
-    </div>
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-[80vh] bg-white text-gray-900 text-center transform -translate-y-full transition-transform duration-500 ease-in-out shadow-lg z-50 overflow-y-auto">    <div class="absolute top-7 left-6 text-xl font-bold">Menu</div>
+    <button id="close-btn" class="absolute top-5 right-5 text-3xl font-bold text-gray-900 focus:outline-none">x</button>
+    
+    <!-- Line below Menu and Close button -->
+    <hr class="absolute top-14 left-0 w-full border-t border-gray-300">
+    
+    <ul class="flex flex-col space-y-6 pt-20 text-xl">
+        <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
+        <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
+        <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
+        <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
+        <li>
+            <a href="#signin" class="block py-3 bg-blue-600 text-white rounded-md px-6 py-2 mx-auto w-32 hover:bg-blue-700">
+                Sign In
+            </a>
+        </li>
+    </ul>
+</div>
 </nav>
 
 <!-- JavaScript -->
@@ -72,7 +74,7 @@
         if (currentScrollY > scrollThreshold && !isScrolled) {
             // Apply scroll changes
             isScrolled = true;
-            navbar.classList.add("bg-[#446680]", "text-white", "rounded-b-[50px]", "shadow-lg");
+            navbar.classList.add("bg-[#152651]", "text-white", "rounded-b-[50px]", "shadow-lg");
             navbar.classList.remove("bg-white", "text-black");
 
             logoDefault.classList.add("opacity-0");
@@ -82,7 +84,7 @@
             // Revert to original navbar
             isScrolled = false;
             navbar.classList.add("bg-white", "text-black");
-            navbar.classList.remove("bg-[#446680]", "text-white", "rounded-b-[50px]", "shadow-lg");
+            navbar.classList.remove("bg-[#152651]", "text-white", "rounded-b-[50px]", "shadow-lg");
 
             logoDefault.classList.remove("opacity-0");
             logoScroll.classList.add("opacity-0");
@@ -92,14 +94,17 @@
     // Attach scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Mobile Menu Toggle
-    document.getElementById("menu-btn").addEventListener("click", function() {
-        document.getElementById("mobile-menu").classList.remove("-translate-y-full");
-    });
+   // Mobile Menu Toggle
+document.getElementById("menu-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.remove("-translate-y-full");
+    document.getElementById("mobile-menu").classList.add("translate-y-0");
+});
 
-    document.getElementById("close-btn").addEventListener("click", function() {
-        document.getElementById("mobile-menu").classList.add("-translate-y-full");
-    });
+document.getElementById("close-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.add("-translate-y-full");
+    document.getElementById("mobile-menu").classList.remove("translate-y-0");
+});
+
 
     // Highlight active link
     function setActiveLink() {
@@ -110,9 +115,9 @@
             let linkPath = new URL(link.href).pathname;
 
             if (linkPath === currentPath) {
-                link.classList.add("bg-blue-500", "text-white", "rounded-full");
+                link.classList.add("bg-blue-500", "text-white", "hover:text-gray-800", "rounded-full");
             } else {
-                link.classList.remove("bg-blue-500", "text-white", "rounded-full");
+                link.classList.remove("bg-blue-500", "text-white","hover:text-gray-800", "rounded-full");
             }
         });
     }
@@ -120,7 +125,6 @@
     // Run on page load
     window.addEventListener("DOMContentLoaded", setActiveLink);
 </script>
-
 
     <div class="max-w-7xl mx-auto mt-24">
         <h1 class="text-5xl font-extrabold text-center mb-10 text-blue-700">Rental Properties in Bhubaneswar</h1>
@@ -135,23 +139,29 @@
 
     <select id="locationFilter" class="border p-3 rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-400 transition duration-300 hover:border-blue-600">
         <option value="">All Locations</option>
-        <option value="New York">New York</option>
-        <option value="Los Angeles">Los Angeles</option>
-        <option value="Chicago">Chicago</option>
+        <option value="Patia">Patia</option>
+        <option value="KIIT">KIIT</option>
+        <option value="Raghunathpur">Raghunathpur</option>
+        <option value="Nandan Vihar">Nandan Vihar</option>
+        <option value="Niladri Vihar">Niladri Vihar</option>
+        <option value="Sailashree Vihar">Sailashree Viha</option>
+        <option value="Damana">Damana</option>
+        <option value="Chandrasekharpur">Chandrasekharpur</option>
+        <option value="Nayapali">Nayapali</option>
     </select>
 
     <select id="priceFilter" class="border p-3 rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-400 transition duration-300 hover:border-blue-600">
         <option value="">All Prices</option>
-        <option value="0-500000">Below $500,000</option>
-        <option value="500000-1000000">$500,000 - $1,000,000</option>
-        <option value="1000000">Above $1,000,000</option>
+        <option value="0-20000">Below ₹20,000</option>
+        <option value="20000-40000">₹20,000 - ₹40,000</option>
+        <option value="40000">Above ₹40,000</option>
     </select>
 
     <select id="typeFilter" class="border p-3 rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-400 transition duration-300 hover:border-blue-600">
         <option value="">All Types</option>
-        <option value="Office">Office</option>
-        <option value="Retail">Retail</option>
-        <option value="Warehouse">Warehouse</option>
+        <option value="Appartment">Appartment</option>
+        <option value="Individual House">Individual House</option>
+        <option value="Duplex">Duplex</option>
     </select>
 
     <button onclick="filterProperties()" class="bg-white text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg shadow-md font-semibold transition duration-300 border border-blue-600">
@@ -168,12 +178,12 @@
     
     <script>
         const properties = [
-            { location: "New York", price: 800000, type: "Office", images: ["https://img.freepik.com/free-photo/mumbai-skyline-skyscrapers-construction_469504-21.jpg?t=st=1742320806~exp=1742324406~hmac=ceeb70fc3b7dc04154d7eda8da378874992eced12b6db6946ef5794c80a9bdd2&w=1380", "https://img.freepik.com/free-photo/observation-urban-building-business-steel_1127-2397.jpg?t=st=1742320833~exp=1742324433~hmac=1b17d39b8e6ff551df5851daf692c3fcdd41fb4e55b76e0ce31debe55e8826ec&w=1380", "https://img.freepik.com/free-photo/skyscrapers-sunset_1112-1870.jpg?t=st=1742321007~exp=1742324607~hmac=ea5b363c71f3e8a3dbd4859e2e84bd4c64c934375296da4b4d7edc907ca92414&w=1380", "https://img.freepik.com/free-photo/office-buildings_1127-3158.jpg?t=st=1742320868~exp=1742324468~hmac=af724e9a5cc1589841c1a2ee940320795c18a03c6f9ebd0a21c4e975feeab2cd&w=1380", "https://img.freepik.com/free-photo/empty-floor-front-modern-building_1127-3154.jpg?t=st=1742320920~exp=1742324520~hmac=d698a9dae011319abd0374403f70fc2151ddb1d36c36d016af3cad31ac78bb8f&w=1380"], title: "Office Space - New York" },
-            { location: "Los Angeles", price: 950000, type: "Retail", images: ["https://source.unsplash.com/400x250/?retail", "https://source.unsplash.com/400x250/?store", "https://source.unsplash.com/400x250/?mall", "https://source.unsplash.com/400x250/?shop", "https://source.unsplash.com/400x250/?boutique"], title: "Retail Space - Los Angeles" },
-            { location: "Chicago", price: 600000, type: "Warehouse", images: ["https://source.unsplash.com/400x250/?warehouse", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "Chicago", price: 600000, type: "Warehouse", images: ["https://source.unsplash.com/400x250/?warehouse", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "Chicago", price: 600000, type: "Warehouse", images: ["https://source.unsplash.com/400x250/?warehouse", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "Chicago", price: 600000, type: "Warehouse", images: ["https://source.unsplash.com/400x250/?warehouse", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" }
+            { location: "Nandan Vihar", price: 35000, type: "Appartment", images: ["src/assets/image/home/rent/rent1/rent2.jpeg", "https://img.freepik.com/free-photo/observation-urban-building-business-steel_1127-2397.jpg?t=st=1742320833~exp=1742324433~hmac=1b17d39b8e6ff551df5851daf692c3fcdd41fb4e55b76e0ce31debe55e8826ec&w=1380", "https://img.freepik.com/free-photo/skyscrapers-sunset_1112-1870.jpg?t=st=1742321007~exp=1742324607~hmac=ea5b363c71f3e8a3dbd4859e2e84bd4c64c934375296da4b4d7edc907ca92414&w=1380", "https://img.freepik.com/free-photo/office-buildings_1127-3158.jpg?t=st=1742320868~exp=1742324468~hmac=af724e9a5cc1589841c1a2ee940320795c18a03c6f9ebd0a21c4e975feeab2cd&w=1380", "https://img.freepik.com/free-photo/empty-floor-front-modern-building_1127-3154.jpg?t=st=1742320920~exp=1742324520~hmac=d698a9dae011319abd0374403f70fc2151ddb1d36c36d016af3cad31ac78bb8f&w=1380"], title: "Office Space - New York" },
+            { location: "Raghunathpur", price: 23000, type: "Appartment", images: ["src/assets/image/home/rent/rent2/rent.jpeg", "https://source.unsplash.com/400x250/?store", "https://source.unsplash.com/400x250/?mall", "https://source.unsplash.com/400x250/?shop", "https://source.unsplash.com/400x250/?boutique"], title: "Retail Space - Los Angeles" },
+            { location: "Nandan Vihar", price: 32000, type: "Appartment", images: ["src/assets/image/home/rent/rent3/rent.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
+            { location: "KIIT", price: 16000, type: "Individual House", images: ["src/assets/image/home/rent/rent4/rent.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
+            { location: "Patia", price: 37500, type: "Duplex", images: ["src/assets/image/home/rent/rent5/rent1.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
+            { location: "KIIT", price: 37000, type: "Appartment", images: ["src/assets/image/home/rent/rent6/rent1.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" }
         ];
         
         function createPropertyCard(property) {
@@ -194,7 +204,7 @@
                     <button class="next absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded">❯</button>
                 </div>
                 <h2 class="text-2xl font-semibold text-blue-600 mt-4">${property.title}</h2>
-                <p class="text-gray-700">Price: <span class="font-bold">$${property.price.toLocaleString()}</span></p>
+                <p class="text-gray-700">Price: <span class="font-bold">₹${property.price.toLocaleString()}</span></p>
                 <p class="text-gray-700">Type: ${property.type}</p>
             `;
             
