@@ -46,7 +46,7 @@
     <hr class="absolute top-14 left-0 w-full border-t border-gray-300">
     
     <ul class="flex flex-col space-y-6 pt-20 text-xl">
-        <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
+        <li><a href="/index.html" class="block py-3 hover:text-blue-500">Home</a></li>
         <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
         <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
         <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
@@ -65,6 +65,7 @@
     let navbar = document.getElementById("navbar");
     let logoDefault = document.getElementById("logo-default");
     let logoScroll = document.getElementById("logo-scroll");
+    let menuBtn = document.getElementById("menu-btn"); 
     let isScrolled = false;
 
     function handleScroll() {
@@ -80,6 +81,11 @@
             logoDefault.classList.add("opacity-0");
             logoScroll.classList.remove("opacity-0");
 
+
+             // Change menu button color to white
+             menuBtn.classList.remove("text-gray-700");
+            menuBtn.classList.add("text-white");
+
         } else if (currentScrollY <= scrollThreshold && isScrolled) {
             // Revert to original navbar
             isScrolled = false;
@@ -88,6 +94,10 @@
 
             logoDefault.classList.remove("opacity-0");
             logoScroll.classList.add("opacity-0");
+
+             // Change menu button color back to gray
+             menuBtn.classList.remove("text-white");
+            menuBtn.classList.add("text-gray-700");
         }
     }
 
@@ -127,6 +137,7 @@ document.getElementById("close-btn").addEventListener("click", function() {
 </script>
 
 
+
     <div class="max-w-7xl mx-auto mt-24">
         <h1 class="text-5xl font-extrabold text-center mb-10 text-blue-700">Properties to buy in Bhubaneswar</h1>
         
@@ -140,23 +151,29 @@ document.getElementById("close-btn").addEventListener("click", function() {
 
     <select id="locationFilter" class="border p-3 rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-400 transition duration-300 hover:border-blue-600">
         <option value="">All Locations</option>
-        <option value="New York">New York</option>
-        <option value="Los Angeles">Los Angeles</option>
-        <option value="Chicago">Chicago</option>
+        <option value="Patia">Patia</option>
+        <option value="KIIT">KIIT</option>
+        <option value="Raghunathpur">Raghunathpur</option>
+        <option value="Nandan Vihar">Nandan Vihar</option>
+        <option value="Niladri Vihar">Niladri Vihar</option>
+        <option value="Sailashree Vihar">Sailashree Viha</option>
+        <option value="Damana">Damana</option>
+        <option value="Chandrasekharpur">Chandrasekharpur</option>
+        <option value="Nayapali">Nayapali</option>
     </select>
 
     <select id="priceFilter" class="border p-3 rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-400 transition duration-300 hover:border-blue-600">
         <option value="">All Prices</option>
-        <option value="0-500000">Below $500,000</option>
-        <option value="500000-1000000">$500,000 - $1,000,000</option>
-        <option value="1000000">Above $1,000,000</option>
+        <option value="0-500000">Below ₹5,000,000</option>
+        <option value="500000-1000000">₹5,000,000 - ₹10,000,000</option>
+        <option value="1000000">Above ₹10,000,000</option>
     </select>
 
     <select id="typeFilter" class="border p-3 rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-400 transition duration-300 hover:border-blue-600">
         <option value="">All Types</option>
-        <option value="Office">Office</option>
-        <option value="Retail">Retail</option>
-        <option value="Warehouse">Warehouse</option>
+        <option value="Office">Appartment</option>
+        <option value="Retail">House</option>
+        <option value="Warehouse">Duplex</option>
     </select>
 
     <button onclick="filterProperties()" class="bg-white text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg shadow-md font-semibold transition duration-300 border border-blue-600">
@@ -167,19 +184,18 @@ document.getElementById("close-btn").addEventListener("click", function() {
 
         
         <!-- Property Listings -->
-        <div id="propertyList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="propertyList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
         </div>
     </div>
     
     <script>
         const properties = [
-            { location: "New York", price: 800000, type: "Office", images: ["https://img.freepik.com/free-photo/mumbai-skyline-skyscrapers-construction_469504-21.jpg?t=st=1742320806~exp=1742324406~hmac=ceeb70fc3b7dc04154d7eda8da378874992eced12b6db6946ef5794c80a9bdd2&w=1380", "https://img.freepik.com/free-photo/observation-urban-building-business-steel_1127-2397.jpg?t=st=1742320833~exp=1742324433~hmac=1b17d39b8e6ff551df5851daf692c3fcdd41fb4e55b76e0ce31debe55e8826ec&w=1380", "https://img.freepik.com/free-photo/skyscrapers-sunset_1112-1870.jpg?t=st=1742321007~exp=1742324607~hmac=ea5b363c71f3e8a3dbd4859e2e84bd4c64c934375296da4b4d7edc907ca92414&w=1380", "https://img.freepik.com/free-photo/office-buildings_1127-3158.jpg?t=st=1742320868~exp=1742324468~hmac=af724e9a5cc1589841c1a2ee940320795c18a03c6f9ebd0a21c4e975feeab2cd&w=1380", "https://img.freepik.com/free-photo/empty-floor-front-modern-building_1127-3154.jpg?t=st=1742320920~exp=1742324520~hmac=d698a9dae011319abd0374403f70fc2151ddb1d36c36d016af3cad31ac78bb8f&w=1380"], title: "Office Space - New York" },
-            { location: "Los Angeles", price: 950000, type: "Retail", images: ["https://source.unsplash.com/400x250/?retail", "https://source.unsplash.com/400x250/?store", "https://source.unsplash.com/400x250/?mall", "https://source.unsplash.com/400x250/?shop", "https://source.unsplash.com/400x250/?boutique"], title: "Retail Space - Los Angeles" },
-            { location: "Chicago", price: 600000, type: "Warehouse", images: ["https://source.unsplash.com/400x250/?warehouse", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "Chicago", price: 600000, type: "Warehouse", images: ["https://source.unsplash.com/400x250/?warehouse", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "Chicago", price: 600000, type: "Warehouse", images: ["https://source.unsplash.com/400x250/?warehouse", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "Chicago", price: 600000, type: "Warehouse", images: ["https://source.unsplash.com/400x250/?warehouse", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" }
-        ];
+            { location: "Chandrasekharpur", price: 800000, type: "Appartment", images: ["src/pages/full-listing/sell/aryasuman/aryasuman.jpeg"], title: "Arya Suman Complex", detailsPage: "src/pages/full-listing/sell-listing1.html" },
+            { location: "Nayapali", price: 950000, type: "Appartment", images: ["src/pages/full-listing/sell/jbpolaris/jbpolaris.jpeg","src/pages/full-listing/sell/jbpolaris/jbpolaris2.jpeg","src/pages/full-listing/sell/jbpolaris/jbpolari3.jpeg","src/pages/full-listing/sell/jbpolaris/jbpolaris4.jpeg","src/pages/full-listing/sell/jbpolaris/jbpolaris5.jpeg"], title: "JB Polaris", detailsPage: "src/pages/full-listing/sell-listing2.html" },
+            { location: "Nayapali", price: 600000, type: "Appartment", images: ["src/pages/full-listing/sell/meadowex/meadowex1.jpeg","src/pages/full-listing/sell/meadowex/meadowex2.jpeg","src/pages/full-listing/sell/meadowex/meadowex3.jpeg","src/pages/full-listing/sell/meadowex/meadowex4.jpeg","src/pages/full-listing/sell/meadowex/meadowex5.jpeg","src/pages/full-listing/sell/meadowex/meadowex6.jpeg","src/pages/full-listing/sell/meadowex/meadowex7.jpeg","src/pages/full-listing/sell/meadowex/meadowex8.jpeg","src/pages/full-listing/sell/meadowex/meadowex9.jpeg"], title: "JB Meadowex", detailsPage: "src/pages/full-listing/sell-listing3html" },
+            { location: "Satya Vihar", price: 600000, type: "Appartment", images: ["src/pages/full-listing/sell/suman/suman1.jpeg",], title: "Suman Mansion", detailsPage: "src/pages/full-listing/sell-listing4.html" }
+            
+            ];
         
         function createPropertyCard(property) {
             const card = document.createElement("div");
@@ -201,6 +217,7 @@ document.getElementById("close-btn").addEventListener("click", function() {
                 <h2 class="text-2xl font-semibold text-blue-600 mt-4">${property.title}</h2>
                 <p class="text-gray-700">Price: <span class="font-bold">$${property.price.toLocaleString()}</span></p>
                 <p class="text-gray-700">Type: ${property.type}</p>
+                <a href="${property.detailsPage}" class="mt-4 block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">View Details</a>
             `;
             
             let index = 0;

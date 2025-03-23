@@ -79,15 +79,15 @@ function changeHeroImage(category) {
 
     // Define images for each category
     const images = {
-        buy: "/src/assets/image/home/buy.jpg",
-        rent: "/src/assets/image/home/rent (1).jpg",
-        commercial: "/src/assets/image/home/commercial (2).jpg",
-        plot: "/src/assets/image/home/plot (1).jpg"
+        buy: "/src/assets/image/home/03.webp",
+        rent: "/src/assets/image/home/01.webp",
+        commercial: "/src/assets/image/home/02.webp",
+        plot: "/src/assets/image/home/04.webp"
     };
 
     // Define headings for each category
     const headings = {
-        buy: "Properties to buy in Bhubaneswar",
+        buy: "Buy properties in Bhubaneswar",
         rent: "Rental Properties in Bhubaneswar",
         commercial: "Commercial Properties in Bhubaneswar",
         plot: "Plots Available in Bhubaneswar"
@@ -96,15 +96,21 @@ function changeHeroImage(category) {
     // Update hero background image and heading
     heroSection.style.backgroundImage = `url('${images[category]}')`;
     heroHeading.textContent = headings[category];
+
+   // Store the updated heading to avoid overriding
+   heroHeading.dataset.originalText = headings[category];
 }
 
-
-
-//search bar Button working
+// Search bar Button working
 function filterProperties(type) {
-    // Update the hero section heading
-    document.getElementById('hero-heading').innerText = `Properties to ${type} in Bhubaneswar`;
-    
+    const heroHeading = document.getElementById('hero-heading');
+
+    // Check if an original heading exists
+    if (heroHeading.dataset.originalText) {
+        heroHeading.innerText = heroHeading.dataset.originalText; // Keep original heading
+    } else {
+        heroHeading.innerText = `${type} Properties in Bhubaneswar`;
+    }   
     // Filter property listings
     document.querySelectorAll('.property').forEach(property => {
         if (property.getAttribute('data-type') === type) {

@@ -46,7 +46,7 @@
     <hr class="absolute top-14 left-0 w-full border-t border-gray-300">
     
     <ul class="flex flex-col space-y-6 pt-20 text-xl">
-        <li><a href="index.html" class="block py-3 hover:text-blue-500">Home</a></li>
+        <li><a href="/index.html" class="block py-3 hover:text-blue-500">Home</a></li>
         <li><a href="/src/pages/about/about.html" class="block py-3 hover:text-blue-500">About</a></li>
         <li><a href="/src/pages/contact/contact.html" class="block py-3 hover:text-blue-500">Contact</a></li>
         <li><a href="tel:+917008937155" class="block py-3 hover:text-blue-500">+91 7008937155</a></li>
@@ -65,6 +65,7 @@
     let navbar = document.getElementById("navbar");
     let logoDefault = document.getElementById("logo-default");
     let logoScroll = document.getElementById("logo-scroll");
+    let menuBtn = document.getElementById("menu-btn"); 
     let isScrolled = false;
 
     function handleScroll() {
@@ -80,6 +81,11 @@
             logoDefault.classList.add("opacity-0");
             logoScroll.classList.remove("opacity-0");
 
+
+             // Change menu button color to white
+             menuBtn.classList.remove("text-gray-700");
+            menuBtn.classList.add("text-white");
+
         } else if (currentScrollY <= scrollThreshold && isScrolled) {
             // Revert to original navbar
             isScrolled = false;
@@ -88,6 +94,10 @@
 
             logoDefault.classList.remove("opacity-0");
             logoScroll.classList.add("opacity-0");
+
+             // Change menu button color back to gray
+             menuBtn.classList.remove("text-white");
+            menuBtn.classList.add("text-gray-700");
         }
     }
 
@@ -126,6 +136,7 @@ document.getElementById("close-btn").addEventListener("click", function() {
     window.addEventListener("DOMContentLoaded", setActiveLink);
 </script>
 
+
     <div class="max-w-7xl mx-auto mt-24">
         <h1 class="text-5xl font-extrabold text-center mb-10 text-blue-700">Rental Properties in Bhubaneswar</h1>
         
@@ -140,14 +151,45 @@ document.getElementById("close-btn").addEventListener("click", function() {
     <select id="locationFilter" class="border p-3 rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-400 transition duration-300 hover:border-blue-600">
         <option value="">All Locations</option>
         <option value="Patia">Patia</option>
-        <option value="KIIT">KIIT</option>
+        <option value="KIIT Square">KIIT Square</option>
         <option value="Raghunathpur">Raghunathpur</option>
         <option value="Nandan Vihar">Nandan Vihar</option>
         <option value="Niladri Vihar">Niladri Vihar</option>
         <option value="Sailashree Vihar">Sailashree Viha</option>
         <option value="Damana">Damana</option>
         <option value="Chandrasekharpur">Chandrasekharpur</option>
-        <option value="Nayapali">Nayapali</option>
+        <option value="Nayapalli">Nayapalli</option>
+        <option value="Infocity Square Patia">Infocity Square Patia</option>
+        <option value="Shree vihar ">Shree vihar </option>
+        <option value="Kalarahanga">Kalarahanga</option>
+        <option value="Patia Station Road ">Patia Station Road</option>
+        <option value="Maitri Vihar">Maitri Vihar</option>
+        <option value="Gajapati Nagar">Gajapati Nagar</option>
+        <option value="Acharya Vihar">Acharya Vihar</option>
+        <option value="Jaydev Vihar">Jaydev Vihar</option>
+        <option value="Jagamara">Jagamara</option>
+        <option value="Khandagiri">Khandagiri</option>
+        <option value="Dumduma">Dumduma</option>
+        <option value="Pokhariput">Pokhariput</option>
+        <option value="Baramunda">Baramunda</option>
+        <option value="CRPF Square ">CRPF Square </option>
+        <option value="Fire Station ">Fire Station </option>
+        <option value="Kharabela Nagar Unit 3">Kharabela Nagar Unit 3</option>
+        <option value="Surya Nagar Unit 8">Surya Nagar Unit 8</option>
+        <option value="Ganga nagar Unit 6">Ganga nagar Unit 6</option>
+        <option value="Unit 4">Unit 4</option>
+        <option value="Unit 9">Unit 9</option>
+        <option value="Saheed Nagar">Saheed Nagar</option>
+        <option value="Satya Nagar">Satya Nagar</option>
+        <option value="Kalpana Square">Kalpana Square</option>
+        <option value="Rasulgarh ">Rasulgarh </option>
+        <option value="Bamikhal">Bamikhal</option>
+        <option value="Laxmi Sagar ">Laxmi Sagar </option>
+        <option value="Vani Vihar">Vani Vihar</option>
+        <option value="Sum Hospital ">Sum Hospital </option>
+        <option value="Patrapada">Patrapada</option>
+
+
     </select>
 
     <select id="priceFilter" class="border p-3 rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-400 transition duration-300 hover:border-blue-600">
@@ -178,12 +220,12 @@ document.getElementById("close-btn").addEventListener("click", function() {
     
     <script>
         const properties = [
-            { location: "Nandan Vihar", price: 35000, type: "Appartment", images: ["src/assets/image/home/rent/rent1/rent2.jpeg", "https://img.freepik.com/free-photo/observation-urban-building-business-steel_1127-2397.jpg?t=st=1742320833~exp=1742324433~hmac=1b17d39b8e6ff551df5851daf692c3fcdd41fb4e55b76e0ce31debe55e8826ec&w=1380", "https://img.freepik.com/free-photo/skyscrapers-sunset_1112-1870.jpg?t=st=1742321007~exp=1742324607~hmac=ea5b363c71f3e8a3dbd4859e2e84bd4c64c934375296da4b4d7edc907ca92414&w=1380", "https://img.freepik.com/free-photo/office-buildings_1127-3158.jpg?t=st=1742320868~exp=1742324468~hmac=af724e9a5cc1589841c1a2ee940320795c18a03c6f9ebd0a21c4e975feeab2cd&w=1380", "https://img.freepik.com/free-photo/empty-floor-front-modern-building_1127-3154.jpg?t=st=1742320920~exp=1742324520~hmac=d698a9dae011319abd0374403f70fc2151ddb1d36c36d016af3cad31ac78bb8f&w=1380"], title: "Office Space - New York" },
-            { location: "Raghunathpur", price: 23000, type: "Appartment", images: ["src/assets/image/home/rent/rent2/rent.jpeg", "https://source.unsplash.com/400x250/?store", "https://source.unsplash.com/400x250/?mall", "https://source.unsplash.com/400x250/?shop", "https://source.unsplash.com/400x250/?boutique"], title: "Retail Space - Los Angeles" },
-            { location: "Nandan Vihar", price: 32000, type: "Appartment", images: ["src/assets/image/home/rent/rent3/rent.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "KIIT", price: 16000, type: "Individual House", images: ["src/assets/image/home/rent/rent4/rent.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "Patia", price: 37500, type: "Duplex", images: ["src/assets/image/home/rent/rent5/rent1.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" },
-            { location: "KIIT", price: 37000, type: "Appartment", images: ["src/assets/image/home/rent/rent6/rent1.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago" }
+            { location: "Nandan Vihar", price: 35000, type: "Appartment", images: ["src/assets/image/home/rent/rent1/rent2.jpeg", "https://img.freepik.com/free-photo/observation-urban-building-business-steel_1127-2397.jpg?t=st=1742320833~exp=1742324433~hmac=1b17d39b8e6ff551df5851daf692c3fcdd41fb4e55b76e0ce31debe55e8826ec&w=1380", "https://img.freepik.com/free-photo/skyscrapers-sunset_1112-1870.jpg?t=st=1742321007~exp=1742324607~hmac=ea5b363c71f3e8a3dbd4859e2e84bd4c64c934375296da4b4d7edc907ca92414&w=1380", "https://img.freepik.com/free-photo/office-buildings_1127-3158.jpg?t=st=1742320868~exp=1742324468~hmac=af724e9a5cc1589841c1a2ee940320795c18a03c6f9ebd0a21c4e975feeab2cd&w=1380", "https://img.freepik.com/free-photo/empty-floor-front-modern-building_1127-3154.jpg?t=st=1742320920~exp=1742324520~hmac=d698a9dae011319abd0374403f70fc2151ddb1d36c36d016af3cad31ac78bb8f&w=1380"], title: "Office Space - New York", detailsPage: "src/pages/full-listing/rent-listing/rlist1.html" },
+            { location: "Raghunathpur", price: 23000, type: "Appartment", images: ["src/assets/image/home/rent/rent2/rent.jpeg", "https://source.unsplash.com/400x250/?store", "https://source.unsplash.com/400x250/?mall", "https://source.unsplash.com/400x250/?shop", "https://source.unsplash.com/400x250/?boutique"], title: "Retail Space - Los Angeles", detailsPage: "src/pages/full-listing/rent-listing/rlist2.html" },
+            { location: "Nandan Vihar", price: 32000, type: "Appartment", images: ["src/assets/image/home/rent/rent3/rent.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago", detailsPage: "src/pages/full-listing/rent-listing/rlist3.html" },
+            { location: "KIIT", price: 16000, type: "Individual House", images: ["src/assets/image/home/rent/rent4/rent.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago", detailsPage: "src/pages/full-listing/rent-listing/rlist4.html" },
+            { location: "Patia", price: 37500, type: "Duplex", images: ["src/assets/image/home/rent/rent5/rent1.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago", detailsPage: "src/pages/full-listing/rent-listing/rlist5.html" },
+            { location: "KIIT", price: 37000, type: "Appartment", images: ["src/assets/image/home/rent/rent6/rent1.jpeg", "https://source.unsplash.com/400x250/?factory", "https://source.unsplash.com/400x250/?industrial", "https://source.unsplash.com/400x250/?storage", "https://source.unsplash.com/400x250/?logistics"], title: "Warehouse - Chicago", detailsPage: "src/pages/full-listing/rent-listing/rlist6.html" }
         ];
         
         function createPropertyCard(property) {
@@ -206,6 +248,7 @@ document.getElementById("close-btn").addEventListener("click", function() {
                 <h2 class="text-2xl font-semibold text-blue-600 mt-4">${property.title}</h2>
                 <p class="text-gray-700">Price: <span class="font-bold">₹${property.price.toLocaleString()}</span></p>
                 <p class="text-gray-700">Type: ${property.type}</p>
+                <a href="${property.detailsPage}" class="mt-4 block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">View Details</a>
             `;
             
             let index = 0;
